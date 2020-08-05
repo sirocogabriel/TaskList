@@ -1,0 +1,15 @@
+{
+  "name": "TaskList",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/sirocogabriel/TaskList.git",
+  "author": "sirocogabriel <sirocogabriel@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.7",
+    "express": "^4.17.1"
+  }
+}
