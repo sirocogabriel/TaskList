@@ -11,6 +11,8 @@ export const Container = styled.div`
   font-weight: 500;
   transition: background-color 0.2s;
 
+  margin-top: 12px;
+
   &:hover {
     background: ${shade(0.2, '#ff9000')};
   }
