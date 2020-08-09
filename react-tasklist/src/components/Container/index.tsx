@@ -9,7 +9,9 @@ const ContainerTask: React.FC = ({ children }) => {
   return (
     <Container>
       <div>
-        <h1>Tasks</h1>
+        <h1>Add Task</h1>
+        <form action=""></form>
+        <input type="text" />
         <button onClick={addTask}>
           <FiPlusCircle size={25} />
         </button>
