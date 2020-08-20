@@ -1,22 +1,37 @@
 import React from 'react';
+
 import { FiPlusCircle } from 'react-icons/fi';
+
+import Task from '../Tasks';
+import { TaskMessage } from '../../hooks/task';
 
 import { Container } from './styles';
 
-const ContainerTask: React.FC = ({ children }) => {
-  const addTask = () => {};
+interface TaskContainerProps {
+  messages?: TaskMessage[];
+}
+
+const ContainerTask: React.FC<TaskContainerProps> = ({ messages }) => {
+  const addTask = () => {
+    return;
+  };
 
   return (
     <Container>
-      <div>
+      <form>
         <h1>Add Task</h1>
-        <form action=""></form>
-        <input type="text" />
-        <button onClick={addTask}>
-          <FiPlusCircle size={25} />
+        <input name="task" type="text" />
+        <button type="submit" onClick={addTask}>
+          <FiPlusCircle size={26} />
         </button>
-      </div>
-      {children}
+      </form>
+      {messages?.map((message) => (
+        <Task
+          id={message.id}
+          title={message.title}
+          description={message.description}
+        />
+      ))}
     </Container>
   );
 };

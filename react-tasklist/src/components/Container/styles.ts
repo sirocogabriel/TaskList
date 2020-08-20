@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { shade } from 'polished';
+import { shade, lighten } from 'polished';
 
 export const Container = styled.div`
   height: 90vh;
@@ -19,7 +19,7 @@ export const Container = styled.div`
   overflow: auto;
   position: relative;
 
-  div {
+  form {
     display: flex;
     align-items: center;
 
@@ -29,6 +29,22 @@ export const Container = styled.div`
       font-family: Arial;
       color: ${shade(0.2, '#ff9000')};
     }
+
+    input {
+      background-color: ${lighten(0.2, '#ff9000')};
+      border-radius: 12px;
+
+      width: 350px;
+      height: 30px;
+
+      margin-top: 10px;
+      margin-left: 10px;
+      padding-left: 10px;
+
+      font-family: Arial, Helvetica, sans-serif;
+      color: ${lighten(0.2, '#000')};
+    }
+
     button {
       width: 30px;
       height: 30px;
