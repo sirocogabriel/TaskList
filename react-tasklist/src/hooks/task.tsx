@@ -12,7 +12,7 @@ export interface TaskMessage {
 
 interface TaskContextData {
   addTask(message: Omit<TaskMessage, 'id'>): void;
-  removeTask(): void;
+  removeTask(id: string): void;
 }
 
 const TaskContext = createContext<TaskContextData>({} as TaskContextData);
@@ -31,12 +31,13 @@ const TaskProvider: React.FC = ({ children }) => {
       };
 
       setMessages((oldTasks) => [...oldTasks, task]);
+      console.log(messages);
     },
-    [],
+    [messages],
   );
 
-  const removeTask = useCallback(() => {
-    console.log('removeTask');
+  const removeTask = useCallback((id: string) => {
+    console.log(`Remove ${id}`);
   }, []);
 
   return (
@@ -56,3 +57,5 @@ function useTask(): TaskContextData {
 
   return context;
 }
+
+export { TaskProvider, useTask };

@@ -22,10 +22,11 @@ export const Container = styled.div`
   form {
     display: flex;
     align-items: center;
+    flex-direction: column;
 
     h1 {
       margin-top: 30px;
-      margin-bottom: 20px;
+      margin-bottom: 5px;
       font-family: Arial;
       color: ${shade(0.2, '#ff9000')};
     }

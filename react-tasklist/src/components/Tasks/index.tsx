@@ -1,10 +1,20 @@
 import React from 'react';
 
-import { TaskMessage } from '../../hooks/task';
+import { TaskMessage, useTask } from '../../hooks/task';
 import { Container } from './styles';
 
-const Task: React.FC<TaskMessage> = ({ id, title, description }) => (
-  <Container>{description}</Container>
+interface TaskProps {
+  message: TaskMessage;
+}
+
+const { removeTask } = useTask();
+
+const Task: React.FC<TaskProps> = ({ message }) => (
+  <Container key={message.id}>
+    <h2>{message.title}</h2>
+    <p>{message.description}</p>
+    <button onClick={() => removeTask(message.id)}></button>
+  </Container>
 );
 
 export default Task;

@@ -1,9 +1,10 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 
 import { FiPlusCircle } from 'react-icons/fi';
 
 import Task from '../Tasks';
-import { TaskMessage } from '../../hooks/task';
+import { TaskMessage, useTask } from '../../hooks/task';
 
 import { Container } from './styles';
 
@@ -12,25 +13,30 @@ interface TaskContainerProps {
 }
 
 const ContainerTask: React.FC<TaskContainerProps> = ({ messages }) => {
-  const addTask = () => {
-    return;
+  const { addTask } = useTask();
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = async (data: object) => {
+    await addTask(data as Omit<TaskMessage, 'id'>);
   };
 
   return (
     <Container>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <h1>Add Task</h1>
-        <input name="task" type="text" />
-        <button type="submit" onClick={addTask}>
+        <input ref={register} placeholder="title" name="title" type="text" />
+        <input
+          ref={register}
+          placeholder="description"
+          name="description"
+          type="text"
+        />
+        <button type="submit">
           <FiPlusCircle size={26} />
         </button>
       </form>
       {messages?.map((message) => (
-        <Task
-          id={message.id}
-          title={message.title}
-          description={message.description}
-        />
+        <Task message={message} />
       ))}
     </Container>
   );
